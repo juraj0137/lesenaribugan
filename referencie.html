@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<link rel="stylesheet" href="assets/style.css">
+	<script src="assets/jquery.js"></script>
+	<script src="assets/jquery.cycle.js"></script>
+	<title>Oficiální stránka - Lešenáři Bugáň - Reference</title>
+</head>
+<script type="text/javascript">
+	$(function(){
+		$('img,body').hide();
+		$('body').fadeIn(500);
+		$('img').fadeIn(1500);
+
+		//galeria - slide sidebar
+
+		function slide () {
+			var side_ul = $('.wrap_2').find('ul');
+			side_ul.delay('2000').animate({left: - 111},2000,function(){
+				side_ul.css({left: 0}).find('li:first').detach().appendTo(side_ul);
+				slide();
+			});
+		};
+		slide();
+
+		//referencie  - mainslide
+
+
+		function slide_left () {
+			var ul = $('.wrap_1').find('ul');
+			ul.animate({left: - 668},700,function(){
+				ul.css({left: 0}).find('li:first').detach().appendTo(ul);
+			});
+		};
+
+		function slide_right () {
+			var ul = $('.wrap_1').find('ul');
+			ul.find('li:last').detach().prependTo(ul);
+			ul.css({left: -668}).animate({left:0},700);
+		};
+
+		$('.left img').click(function(){ slide_right(); });
+		$('.right img').click(function(){ slide_left(); });
+
+		var class_id
+		function class_position (class_id) {
+			var ul = $('.wrap_1').find('ul');
+			var el_left = $('.wrap_1 ul').find('li[class='+class_id+']').position().left;
+
+			ul.animate({left:-el_left},700);
+			ul.css({left: 0});
+		};
+
+		$('.wrap_2 ul li img').click(function() {
+			var cl_id = $(this).attr('class');
+			console.log('class: '+cl_id);
+			class_position(cl_id);
+		});
+
+		 /**
+		 **	Referencie tabulka
+		 **/
+
+ 			var referencie_table = $('.wrapper_table');
+ 			var h3_button = $('.wrapper h3');
+
+ 			referencie_table.hide();
+ 			h3_button.click(function  () {
+ 				referencie_table.slideToggle('slow');
+ 			});
+
+	})
+</script>
+
+<style type="text/css">
+	#ref {background-color: #b0e1f8; background: url("./img/bg6.gif") 0px 0px transparent; padding: 60px 0 70px 0px; /*height: 430px;*/ }
+
+	#ref .wrap_1 {padding: 0 10px; margin: 0 auto; height: 320px}
+	#ref .wrap_1 .left,.current,.right{float: left;}
+	#ref .wrap_1 .left, .right { width:  45px; height: inherit; vertical-align: middle;}
+	#ref .wrap_1 .left  {text-align: left; }
+	#ref .wrap_1 .right {text-align: right; }
+
+	#ref .wrap_1 .left img, .right img { height: 30px; padding: 145px 4px 0 4px; cursor: pointer; }
+	#ref .wrap_1 .left img:hover, .right img:hover { height: 32px; padding: 144px 0 0 0; }
+
+	#ref .wrap_1 .current {width:  658px; height: inherit;  position: relative;overflow: hidden;}
+	#ref .wrap_1 .current img{background-color: white; padding: 4px; margin-right: 20px; border: 1px solid black; width: 420px; height: 310px; float: left;}
+	#ref .wrap_1 .current h2{padding: 60px 0 30px 0;}
+	#ref .wrap_1 .current p{line-height: 25px; padding-top: 10px}
+
+	#ref .wrap_1 ul{list-style: none; position: absolute; height: inherit; display: inline; width: 45000px }
+	#ref .wrap_1 li {float: left; margin-right: 10px; width: 658px;}
+
+
+	#ref .wrap_2 {padding: 10px 0; margin: 10px auto; height: 79px; width: 658px; border-top: 1px dotted black; position: relative; overflow: hidden; }
+	#ref .wrap_2 ul {list-style: none; position: absolute; display: inline; height: 80px; width: 9000px}
+	#ref .wrap_2 ul li:last-child {margin-right: 0}
+	#ref .wrap_2 li {float: left;margin-right: 8px; cursor: pointer; height: 80px}
+	#ref .wrap_2 li img {background-color: white; padding: 2px; border: 1px solid silver; width: 97px; height: 75px }
+	#ref .wrap_2 li img:hover {border: 1px solid black; }
+
+	#ref .wrap_3 { padding: 10px}
+	#ref .wrap_3 .wrapper {background-color: #CCEDFC; border: 1px solid #248EBF; border-radius: 5px; padding: 10px 20px;margin-top: 20px}
+	#ref .wrap_3 .wrapper h3 { padding: 10px 0px 10px 0px; width: 100%; text-align: center; cursor: pointer}
+	#ref .wrap_3 .wrapper h3:hover { text-decoration: underline;}
+	#ref .wrap_3 table { font-size: 14px; width: 100%; margin-top:10px;}
+	#ref .wrap_3 table tr { background:#CCEDFC;}
+	#ref .wrap_3 table tr.modra { background:#93DDFF;}
+	#ref .wrap_3 table td {padding: 5px 0px 5px 5px;}
+
+
+</style>
+<body>
+<style type="text/css">
+	#fixed_menu2 {
+		background-color: #373633;
+		font-family: "PT Sans", sans-serif;
+		height:45px;
+		position: fixed;
+		z-index: 99;
+		width: 100%;
+		display: none;
+	}
+
+	#fixed_menu2 h1 {
+		color: white;
+		font-size: 20px;
+		line-height: 20px;
+		float: left;
+		padding: 13px 0px 0px 10px
+	}
+
+	#fixed_menu2 nav {
+		font-size: 14px;
+		font-weight: 700;
+		text-transform: uppercase;
+		float: right;
+		padding: 15px 10px 0 0;
+	}
+
+	#fixed_menu2 ul {
+		list-style: none;
+		display: inline;
+	}
+
+	#fixed_menu2 li {
+		float: left;
+		margin-left: 10px;
+	}
+
+	#fixed_menu2 a {
+		color: white;
+		text-decoration: none
+	}
+
+	#fixed_menu2 a:hover {
+		color:#F15654
+	}
+
+	#fixed_menu2 a.button{
+		font-size: 14px;
+	}
+</style>
+
+<header id='fixed_menu2'>
+	<div class='centrator'>
+		<h1><a href="index.html"> LešenáriBugáň.cz</a></h1>
+		<nav>
+			<ul>
+				<li><a href='index.html'><img src="img/home.png" alt="" style="height: 36px; margin-top: -13px"> </a></li>
+				<li><a href='index.html?sekcia=sluzby'>nabídka</a></li>
+				<li><a href='index.html?sekcia=referencie'>reference</a></li>
+				<li><a href='index.html?sekcia=kontakt'>kontakt</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+<header id='menu'>
+	<div class='centrator'>
+		<h1><a href="index.html"> LešenáriBugáň.cz</a></h1>
+		<nav>
+			<ul>
+				<li><a href='index.html'><img src="img/home.png" alt="" style="height: 36px; margin-top: -13px"> </a></li>
+				<li><a href='index.html?sekcia=sluzby'>nabídka</a></li>
+				<li><a href='index.html?sekcia=referencie'>reference</a></li>
+				<li><a href='index.html?sekcia=kontakt'>kontakt</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19930268-4']);
+  _gaq.push(['_setDomainName', 'lesenaribugan.cz']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><div class="line_top black"></div>
+<div id='ref'>
+	<div class='centrator'>
+		<div class="wrap_1">
+			<div class="left"><img src="img/arrow_left.png"></div>
+			<div class="current">
+				<ul>
+					<li class="1">
+						<img src="img/referencie/okd_dul_darkov_02.jpg" alt="OKD Dúl Darkov" title="OKD Dúl Darkov">
+						<h2>OKD Dúl Darkov</h2>
+						<p>Místo stavby: Karviná</p>
+						<p>Dělali jsme nátěr loga DARKOV na skype.</p>
+					</li>
+
+					<li class="2">
+						<img src="img/referencie/us_steel_kosice_03.jpg" alt="US Steel Košice" title="US Steel Košice">
+						<h2>US Steel Košice</h2>
+						<p>Místo stavby: Košice </p>
+						<p>Dělali jsme generální opravu vysoké pece</p>
+					</li>
+					<li class="3">
+						<img src="img/referencie/trinecke_zelezarny_01.jpg" alt="Třinecké železárny" title="Třinecké železárny">
+						<h2 style="font-size: 22px">Třinecké železárny</h2>
+						<p>Místo stavby: Třinec </p>
+						<p>Stavěli jsme lešení k různým potrubím a zásobníkúm.</p>
+					</li>
+					<li class="4">
+						<img src="img/referencie/biocel_paskov_01.jpg" alt="BIOCEL Paskov" title="BIOCEL Paskov">
+						<h2>BIOCEL Paskov</h2>
+						<p>Místo stavby: Paskov</p>
+						<p>Stavěli jsme lešení v regeneračním kotli, lešení k potrubím, fasádne lešení.</p>
+					</li>
+					<li class="5">
+						<img src="img/referencie/arcelor_mittal_01.jpg" alt="Arcellor Mittal" title="Arcellor Mittal">
+						<h2>Arcellor Mittal</h2>
+						<p>Místo stavby: Ostrava</p>
+						<p>Stavěli jsme lešení k prúmyslovým jeřábum, lešení k vzduchotechnice, dělali jsme opravárenské práce na turbíne.</p>
+					</li>
+					<li class="6">
+						<img src="img/referencie/cez_01.jpg" alt="ČEZ, a.s." title="ČEZ, a.s.">
+						<h2>ČEZ, a.s.</h2>
+						<p>Místo stavby: Dětmarovice</p>
+						<p>Stavěli jsme lešení k vzduchovodom, lešení v hlubinném zásobníku a lešení ke kotli na GO.</p>
+					</li>
+					<!--li class="">
+						<img src="img/referencie/">
+						<h2>Dalkia</h2>
+						<p>Místo stavby: ??????</p>
+						<p>Stavěli jsme lešení v spalovací komoře K2, čistili jsme kotle K1,K2,K3,K4, stavěli lešení v rámci GO TG4. </p>
+					</li-->
+					<li class="7">
+						<img src="img/referencie/bonatrans_01.jpg" alt="Bonatrans Bohumín" title="Bonatrans Bohumín">
+						<h2 style="font-size: 22px">Bonatrans Bohumín</h2>
+						<p>Místo stavby: Bohumín</p>
+						<p>Stavěli jsme lešení k jeřábové dráze, rúzna lešení v halách a k potrubím.</p>
+					</li>
+					<li class="8">
+						<img src="img/referencie/borsodchem_01.jpg" alt="BorsodChem" title="BorsodChem">
+						<h2>BorsodChem</h2>
+						<p>Místo stavby: Ostrava </p>
+						<p>Dělali jsme lšení na mostě A6 a A8.</p>
+					</li>
+					<li class="9">
+						<img src="img/referencie/tatra_koprivnice_01.jpg" alt="Tatra Kopřivnice" title="Tatra Kopřivnice">
+						<h2>Tatra Kopřivnice</h2>
+						<p>Místo stavby: Kopřivnice</p>
+						<p>Dělali jsme vymalovaní správní budovy, opravu a pokládku dlažby na strojovně.</p>
+					</li>
+
+				</ul>
+			</div>
+			<div class="right"><img src="img/arrow_right.png"></div>
+		</div>
+		<div class="wrap_2">
+			<ul>
+					<li><img class="1" src="img/referencie/okd_dul_darkov_02.jpg" title="OKD Dúl Darkov">			</li>
+					<li><img class="2" src="img/referencie/us_steel_kosice_03.jpg" title="US Steel Košice">			</li>
+					<li><img class="3" src="img/referencie/trinecke_zelezarny_01.jpg" title="Třinecké železárny">	</li>
+					<li><img class="4" src="img/referencie/biocel_paskov_01.jpg" title="BIOCEL Paskov">				</li>
+					<li><img class="5" src="img/referencie/arcelor_mittal_01.jpg" title="Arcellor Mittal">			</li>
+					<li><img class="6" src="img/referencie/cez_01.jpg" title="ČEZ, a.s.">							</li>
+					<!--li class=""><img src="img/referencie/"></li-->
+					<li><img class="7" src="img/referencie/bonatrans_01.jpg" title="Bonatrans Bohumín">				</li>
+					<li><img class="8" src="img/referencie/borsodchem_01.jpg" title="BorsodChem">					</li>
+					<li><img class="9" src="img/referencie/tatra_koprivnice_01.jpg" title="Tatra Kopřivnice">		</li>
+			</ul>
+		</div>
+		<div class="wrap_3">
+			<div class="wrapper">
+    <h3>Seznam referencí</h3>
+    <div class="wrapper_table">
+      <table id="referencie_table" border=0 cellspacing=0 cellpadding=0 >
+       <tr class="modra">
+        <td>Lešenářské práce GO vysoká pec – Košice </td>
+        <td>US Steel Košice </td>
+       </tr>
+
+       <tr>
+        <td>Lešenářské práce na potrubí D2000  </td>
+        <td>Třinecké železárny  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Lešenářské práce v regeneračním kotli   </td>
+        <td>BIOCEL Paskov  </td>
+       </tr>
+
+       <tr>
+        <td>Lešenářské práce – mostový jeřáb  </td>
+        <td>Arcellor Mittal Ostrava  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Lešenářské práce – Demivoda Třinec, zásobníky  </td>
+        <td>Třinecké železárny  </td>
+       </tr>
+
+       <tr>
+        <td>Lešenářské práce – Vzduchovody  </td>
+        <td>ČEZ, a.s. EDě  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení v nádrži vodojemu – Petřvald u Mošnova  </td>
+        <td>Petřvald  </td>
+       </tr>
+
+       <tr>
+        <td>Stavba lešení v rámci GO TG4  </td>
+        <td>Dalkia – TKV  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení v spalovací komoře K2  </td>
+        <td>Dalkia - TPV  </td>
+       </tr>
+
+       <tr>
+        <td>Výstavba lešení vodné přechody v Pardubicích, Dvůr Králové  </td>
+        <td>Pardubice, Dvůr Králové  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení v zásobnících  energetického uhlí   </td>
+        <td>Důl ČSM sever  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení primární chladič   </td>
+        <td>Koksovna Svoboda  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení na zásobníku č.5 u aglomerace č.1  </td>
+        <td>Třinecké železárny  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení hlubinového zásobníku  </td>
+        <td>ČEZ, a.s. EDě  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž závěsného lešení pod pásem 1478  </td>
+        <td>Důl Darkov  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení k střešní konstrukci  </td>
+        <td>Dalkia Frýdek-Místek  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž lešení v absorberu č.1  </td>
+        <td>ČEZ, a.s. EDě  </td>
+       </tr>
+
+       <tr>
+        <td>Opravárenské a montážní práce na turbíně TD2 v Arcellormittal Ostrava  </td>
+        <td>Arcelor Mittal Ostrava  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž lešení na GO kotle č.1  </td>
+        <td>ČEZ, a.s. EDě  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení hala Obrobna č. 1,2,3,4  </td>
+        <td>Bohumín Bonatrans  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž lešení v jeřábové dráze   </td>
+        <td>ŽDB Bohumín  </td>
+       </tr>
+
+       <tr>
+        <td>Natěračské práce Obrobna 1,2,3,4  </td>
+        <td>Bohumín Bonatrans  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení – výsypka surového uhlí   </td>
+        <td>Důl Paskov  </td>
+       </tr>
+
+       <tr>
+        <td>Čištění kotle K1, K2, K3, K4  </td>
+        <td>Dalkia – TPV  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Lešenářské práce 2ks železn. mostu - Karviná  </td>
+        <td>Třinecké železárny  </td>
+       </tr>
+
+       <tr>
+        <td>Čištění zásobníků surového uhlí  </td>
+        <td>Důl ČSM  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení pod potrubí DN300  </td>
+        <td>Bonatrans Bohumín  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení na mostě A6 a A8  </td>
+        <td>BorsodChem MCHZ  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Nátěry el. skřinek a vrat  </td>
+        <td>Sita Ostrava  </td>
+       </tr>
+
+       <tr>
+        <td>Nátěry střech B, C, D  </td>
+        <td>SOU Vsetín  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž lešení k elektroinstalaci  </td>
+        <td>Ostrava – Třebovice, Dalkia a.s.  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení  v kalojemu 2ks  </td>
+        <td>ČOV Vítkov  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Montáž lešení  k přírubám DN1000  </td>
+        <td>Koksovna Svoboda  </td>
+       </tr>
+
+       <tr>
+        <td>Montáž lešení k vzduchotechnice  </td>
+        <td >Arcelor Mittal Frýdek-Místek  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Stavba lešení na akci: „Oprava a nátěr těžní věže jámy Pokrok“  </td>
+        <td>Areál Pokrok - Petřvald  </td>
+       </tr>
+
+       <tr>
+        <td>Stavba lešení na akci: „Oprava těžní věže – Důl Michal“  </td>
+        <td>Důl Michal - Michalkovice  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Zednické práce při opravě tlakového celku   </td>
+        <td>Kopřivnice  </td>
+       </tr>
+
+       <tr>
+        <td>Nátěry turbíny na strojovně  </td>
+        <td>Stonava  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Nátěr loga DARKOV na skype  </td>
+        <td>OKD Důl Darkov  </td>
+       </tr>
+
+       <tr>
+        <td>Demolice správní budovy objektu Petřvald  </td>
+        <td>Bývalý důl Fučik I  </td>
+       </tr>
+
+       <tr class="modra">
+        <td>Vymalování správní budovy  </td>
+        <td>Tatra Kopřivnice  </td>
+       </tr>
+
+       <tr>
+        <td>Oprava a pokládka dlažby na strojovně  </td>
+        <td>Tatra Kopřivnice  </td>
+       </tr>
+      </table>
+    </div>
+</div>
+
+</html>		</div>
+	</div>
+</div>
+<div class="line_bottom black"></div>
+<style type="text/css">
+	#footer {
+		background-color: #000;
+		background-color: #131313;
+		overflow: hidden;
+		padding: 35px 0;
+		font-family: "Arial", "Helvetica", sans-serif;
+		color: #AAAAAA;
+		font-size: 12px;
+		line-height: 1.5em;
+	}
+
+	#footer nav {
+		float: left;
+		padding: 0 10px 0 10px;
+		width: 170px;
+	}
+
+	#footer nav h4 {
+		color: #990000;
+		font-size: 14px;
+		font-weight: 700;
+		margin-bottom: 1em;
+	}
+
+	#footer nav a {
+		color: #AAAAAA;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	#footer nav a:hover { text-decoration: underline; }
+
+	#footer nav ul li {
+		list-style: none outside none;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#footer .top{ height: 158px; }
+
+	.copyright {
+		border-radius: 5px;
+		color: #000000 ;
+		font-size: 13px;
+		padding: 8px ;
+		text-align: center;
+		background-color: #FFFFCC;
+		border: 1px solid #FFD385;
+		width: 730px;
+		margin: 0 10px;
+		margin-top: 25px;
+	}
+
+</style>
+<div class="line_top white"></div>
+<div id='footer'>
+	<div class='centrator'>
+		<div class="top">
+			<nav>
+				<h4>Nabízíme</h4>
+				<ul>
+					<li>Montáž lešení</li>
+					<li>Demontáž lešení</li>
+					<li>Úklidové práce</li>
+					<li>Zámečnické práce</li>
+					<li>Zednické práce</li>
+					<li><a href="sluzby.html">Více...</a></li>
+				</ul>
+			</nav>
+			<nav>
+				<h4>Používáme lešení</h4>
+				<ul>
+					<li>Trubkové</li>
+					<li>Layher</li>
+					<li>Sprint</li>
+					<li>Peri</li>
+				</ul>
+			</nav>
+			<nav>
+				<h4>Kde nás znají</h4>
+				<ul>
+					<li>Třinecké železárny</li>
+					<li>Arcelor Mittal Ostrava</li>
+					<li>USSteel Košice</li>
+					<li>Biocel Paskov</li>
+					<li><a href="referencie.html">Více...</a></li>
+				</ul>
+			</nav>
+			<nav>
+				<h4>Kontakt</h4>
+				<ul>
+					<li>Pavol Bugáň</li>
+					<li>F. S. Tůmy 1202</li>
+					<li>Orlová Lutyně</li>
+					<li>735 14</li>
+					<li>m: 736 416 507</li>
+					<li>m: 041 904 387 067</li>
+					<li>lesenari@centrum.cz</li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="copyright"><strong>Lešenári Bugáň / lesenari@centrum.cz</strong> - 1993 - 2013 © Všechna práva vyhrazena</div>
+
+		<div style="display:none">
+	        Friends:
+	        <a href="http://www.lesenaribugan.cz">LesenariBugan.cz - Oficiálne stránky firmy Lesenári Bugan</a>
+	        <a href="http://www.therebels.sk">TheRebels.sk - Hudobná skupina The Rebels</a>
+	        <a href="http://www.fifaliga.html5.sk">Stránky autora - Fifa liga - Juraj Kubala</a>
+      </div>
+	</div>
+</div>
+
+</body>
+</html>
