@@ -7,6 +7,9 @@
 var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
+var exec = require('child_process').exec;
+var argv = require('minimist')(process.argv.slice(2));
+
 
 /**
  * Get port from environment and store in Express.
@@ -83,8 +86,28 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
+
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
+
+  if (!!argv.build) {
+    exec('..\\wget\\wget.exe -r -np http://localhost:3000', (err, stdout, stderr) => {
+      if (err)
+        return console.log(err)
+
+      console.log(`stdout: ${stdout}`);
+      console.log(`stderr: ${stderr}`);
+      console.log('Downloaded')
+
+      exec('move "localhost+3000" "..\\build\\new"', (err, stdout, stderr) => {
+        if (err)
+          return console.log(err)
+
+        console.log('Moved')
+        process.exit(0);
+      })
+    });
+  }
 }

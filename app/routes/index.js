@@ -1,6 +1,5 @@
 var express = require('express');
-var router = express.Router(); var argv = require('minimist')(process.argv.slice(2));
-var renderToFile = !!argv.build;
+var router = express.Router(); 
 
 const referencie = {
   "okd_dul_darkov_02.jpg": "OKD Důl Darkov",
