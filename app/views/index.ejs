@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<head>
+	<%- include('partials/head') %>
+</head>
+<body>
+	<%- include('partials/analyticstracking') %>
+	<%- include('partials/menu') %>
+	<%- include('partials/home') %>
+	<%- include('partials/sluzby_galeria') %>
+	<%- include('partials/referencie') %>
+	<%- include('partials/cennik') %>
+	<%- include('partials/kontakt') %>
+	<%- include('partials/footer') %>
+</body>
 </html>

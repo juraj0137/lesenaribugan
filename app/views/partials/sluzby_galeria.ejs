@@ -1,0 +1,41 @@
+<div class="line_bottom black"></div>
+
+<div id='sluzby'>
+	<div class='container'>
+
+		<div class="ponuka">
+			<h2>Nabízíme…</h2>
+
+			<ul class="list">
+				<li>Montáž a demontáž lešení</li>
+				<li>Natěračské a malířské práce</li>
+				<li>Zámečnické práce</li>
+				<li>Zednické práce</li>
+				<li>Demoliční práce</li>
+				<li>Tryskání ocelových konstrukcí a betonu</li>
+			</ul>
+
+			<div class="centrator">
+				<a href="/sluzby.html" class="button btn-more">Více ...</a>
+			</div>
+
+		</div>
+
+		<div class="galeria">
+
+			<img class="curr_img img-frame" title="<%= Object.values(sluzby)[0] %> " src="./images/referencie/<%= Object.keys(sluzby)[0] %>">
+
+			<div class="sidebar">
+				<ul>
+					<% Object.keys(sluzby).forEach(img => { %>
+					<li>
+						<img class="side" src="./images/referencie/<%= img %>" title="<%= sluzby[img] %>">
+					</li>
+					<% }) %>
+				</ul>
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<div class="line_top black"></div>
+
+<div id="referencie">
+	<div class="container">
+
+		<div class="zoznam">
+			<h2>Kde jsme stavěli…</h2>
+			<ul class="list">
+				<li>US Steel Košice</li>
+				<li>Třinecké železárny</li>
+				<li>ArcelorMittal Ostrava a.s.</li>
+				<li>Biocel Paskov a.s.</li>
+				<li>Bohumín Bonatrans</li>
+				<li>BorsodChem MCHZ, s.r.o.</li>
+				<li>Vodní nádrž Homole</li>
+			</ul>
+
+			<div class="centrator">
+				<a href="/referencie.html" class="button btn-more">Více ...</a>
+			</div>
+		</div>
+
+		<div class="slideshow">
+			<ul>
+				<% Object.keys(referencie).forEach(img => { %>
+				<li>
+					<img class="img-frame" src="./images/referencie/<%= img %>" title="<%= referencie[img] %>">
+					<h3><%= referencie[img] %></h3>
+				</li>
+				<% }) %>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="clearfix"></div>
+	</div>
+</div>
