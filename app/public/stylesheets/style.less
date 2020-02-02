@@ -396,8 +396,24 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
+#kontakt .right .csn-9001-logo,
 #kontakt .right .ziva-firma-logo {
-	max-width: 200px
+	max-height: 150px;
+	display: inline-block;
+}
+
+#kontakt .right .csn-9001-logo {
+	margin-left: 10px;
+	text-align: center;
+
+	img.logo {
+		max-height: 130px;
+		cursor: pointer;
+	}
+
+	a {
+		display: block;
+	}
 }
 
 #kontakt .mapa {
@@ -668,6 +684,14 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 20px;
 }
 
+#o_firme .certifikat-wrapper {
+	text-align: center;
+	img {
+		width: 100%;
+		max-width: 500px;
+	}
+}
+
 @media(min-width: 500px) { 
 
 	#o_firme {
@@ -679,7 +703,7 @@ h1, h2, h3, h4, h5, h6 {
 		padding-bottom: 20px;
 	}
 
-	#o_firme img {
+	#o_firme img.img-frame {
 		width: 50%;
 		float: right;
 		margin-left: 20px;
@@ -728,3 +752,5 @@ h1, h2, h3, h4, h5, h6 {
 		padding-top: 0
 	}
 }
+
+@import "certifikat_detail.less";

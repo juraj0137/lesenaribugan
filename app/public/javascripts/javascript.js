@@ -79,4 +79,24 @@ $(function () {
 		});
 	});
 
+
+	// Kontakt - detail certifikatu
+	$('.csn-9001-logo a, .csn-9001-logo img').click(function (event) {
+		event.preventDefault();
+		$('.certifikat-detail').fadeIn('fast');
+
+		$('.certifikat-detail *').click(function (event) {
+			event.preventDefault();
+			if (event.target.tagName != 'IMG') {
+				$('.certifikat-detail').fadeOut('fast');
+			}
+		})
+		// var class_id = $(this).attr('class');
+		// var ul = $('.wrap_1').find('ul');
+
+		// ul.find('li:visible').fadeOut('fast', function () {
+		// 	$('.wrap_1 ul').find('li[class=' + class_id + ']').fadeIn('fast');
+		// });
+	});
+
 })
