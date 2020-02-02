@@ -5,9 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('app:server');
 var http = require('http');
-var exec = require('child_process').exec;
 var argv = require('minimist')(process.argv.slice(2));
 
 
@@ -84,7 +82,7 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
+async function onListening() {
   var addr = server.address();
 
   var bind = typeof addr === 'string'
@@ -93,21 +91,38 @@ function onListening() {
   console.log('Listening on ' + bind);
 
   if (!!argv.build) {
-    exec('..\\wget\\wget.exe -r -np http://localhost:3000', (err, stdout, stderr) => {
-      if (err)
-        return console.log(err)
+    let result = await execShellCommand('rmdir /Q /S "..\\build\\new"');
+    console.log(result);
 
-      console.log(`stdout: ${stdout}`);
-      console.log(`stderr: ${stderr}`);
-      console.log('Downloaded')
+    result = await execShellCommand('del "..\\build\\publish.zip"');
+    console.log(result);
 
-      exec('move "localhost+3000" "..\\build\\new"', (err, stdout, stderr) => {
-        if (err)
-          return console.log(err)
+    result = await execShellCommand('..\\wget\\wget.exe -r -np http://localhost:3000');
+    console.log(result);
 
-        console.log('Moved')
-        process.exit(0);
-      })
-    });
+    result = await execShellCommand('move "localhost+3000" "..\\build\\new"');
+    console.log(result);
+
+    result = await execShellCommand('powershell Compress-Archive "..\\build\\new\\*" "..\\build\\publish.zip"');
+    console.log(result);
+
+    process.exit(0);
   }
+}
+
+/**
+ * Executes a shell command and return it as a Promise.
+ * @param cmd {string}
+ * @return {Promise<string>}
+ */
+function execShellCommand(cmd) {
+  const exec = require('child_process').exec;
+  return new Promise((resolve, reject) => {
+    exec(cmd, (error, stdout, stderr) => {
+      if (error) {
+        console.warn(error);
+      }
+      resolve(stdout ? stdout : stderr);
+    });
+  });
 }
