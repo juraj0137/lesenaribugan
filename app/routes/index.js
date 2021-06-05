@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router(); 
 
 const referencie = {
+  "liberty.jpg": "Areál LIBERTY a.s.",
+  "paskov-kotel.jpg": "Biocel Paskov",
   "okd_dul_darkov_02.jpg": "OKD Důl Darkov",
   "homole.jpg": "Vodní nádrž Homole",
   "us_steel_kosice_03.jpg": "US Steel Košice",
