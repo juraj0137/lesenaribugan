@@ -62,7 +62,7 @@ $(function () {
 	// References - slide list of images under main image
 	function referencesGallerySlide() {
 		var side_ul = $('#ref .wrap_2 ul');
-		side_ul.delay('2000').animate({ left: - 105 }, 2000, function () {
+		side_ul.delay('5000').animate({ left: - 105 }, 2000, function () {
 			side_ul.css({ left: 0 }).find('li:first').detach().appendTo(side_ul);
 			referencesGallerySlide();
 		});
