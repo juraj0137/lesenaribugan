@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/lesenar.jpg')" }}
+        style={{ backgroundImage: "url('/images/referencie/oc-karlak-5.jpg')" }}
       />
 
       {/* Overlay gradient */}
@@ -67,7 +67,7 @@ export default function Hero() {
               className="flex items-center space-x-3 text-white hover:text-accent transition-colors group"
             >
               <span className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full group-hover:bg-accent transition-colors">
-                <Phone className="h-5 w-5" />
+                <Phone className="h-5 w-5 text-white group-hover:text-primary-900 transition-colors" />
               </span>
               <span className="text-lg font-semibold">{company.contact.phoneManagerFormatted}</span>
             </a>

@@ -1,5 +1,6 @@
 import Hero from '@/components/sections/Hero'
 import TrustBadges from '@/components/sections/TrustBadges'
+import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import Services from '@/components/sections/Services'
 import References from '@/components/sections/References'
 import WhyUs from '@/components/sections/WhyUs'
@@ -10,6 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <TrustBadges />
+      <FeaturedProjects />
       <Services />
       <References />
       <WhyUs />

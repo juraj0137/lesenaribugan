@@ -30,8 +30,8 @@ export const company = {
       certificateImage: "/images/certifikat_2023.jpg",
     },
     reliableFirm: {
-      name: "Spolehlivá firma 2024",
-      image: "/images/spolehliva-firma-2024_125.png",
+      name: "Spolehlivá firma 2026",
+      image: "/images/spolehliva-firma-2026_125.png",
     },
   },
 } as const

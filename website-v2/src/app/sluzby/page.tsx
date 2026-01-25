@@ -141,7 +141,7 @@ export default function ServicesPage() {
               className="relative rounded-2xl overflow-hidden aspect-[4/3]"
             >
               <img
-                src="/images/home_02.jpg"
+                src="/images/referencie/oc-karlak-5.jpg"
                 alt="Průmyslové lešení"
                 className="w-full h-full object-cover"
               />

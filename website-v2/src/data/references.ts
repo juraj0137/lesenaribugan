@@ -78,6 +78,18 @@ export const references: Reference[] = [
     image: "/images/referencie/tatra_koprivnice_01.jpg",
     category: "Strojírenství",
   },
+  {
+    id: "oc-karlak",
+    name: "OC KARLÁK",
+    image: "/images/referencie/oc-karlak.jpg",
+    category: "Stavebnictví",
+  },
+  {
+    id: "milotice-most",
+    name: "Most Milotice nad Opavou - Brantice",
+    image: "/images/referencie/milotice.jpg",
+    category: "Dopravní stavby",
+  },
 ]
 
 export interface Project {
@@ -111,4 +123,6 @@ export const projects: Project[] = [
   { description: "Lešenářské a jiné práce", location: "Důl ČSM, Důl ČSA, Důl Darkov" },
   { description: "Montáž lešení k výměně kaloriféru - SONK", location: "Areál Viadrus" },
   { description: "Lešenářské práce", location: "Bekaert Petrovice" },
+  { description: "Lešení na přestavbě OC KARLÁK", location: "Karlovo náměstí, Praha" },
+  { description: "Lešení na mostě pro akci Rekonstrukce trati Milotice nad Opavou - Brantice", location: "Bruntálsko" },
 ]
