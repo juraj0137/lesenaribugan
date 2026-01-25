@@ -40,13 +40,6 @@ export default function StructuredData() {
       'Pronájem lešení',
       'Průmyslové lešení',
     ],
-    priceRange: '$$',
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '07:00',
-      closes: '16:00',
-    },
     sameAs: [],
     hasCredential: [
       {
