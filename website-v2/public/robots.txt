@@ -1,0 +1,5 @@
+# robots.txt for lesenaribugan.cz
+User-agent: *
+Allow: /
+
+Sitemap: https://lesenaribugan.cz/sitemap.xml

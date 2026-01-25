@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingContact from '@/components/layout/FloatingContact'
+import StructuredData from '@/components/seo/StructuredData'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -58,6 +59,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <meta name="theme-color" content="#0f172a" />
+        <StructuredData />
       </head>
       <body className="bg-white text-primary-900">
         <Header />
