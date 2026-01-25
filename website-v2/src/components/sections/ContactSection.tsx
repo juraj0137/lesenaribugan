@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
+import CertificateBadges from '@/components/ui/CertificateBadges'
 import { company } from '@/data/company'
 
 export default function ContactSection() {
@@ -52,7 +53,8 @@ export default function ContactSection() {
                   </div>
                 </a>
               </div>
-            </div>
+
+              </div>
           </motion.div>
 
           {/* Email and address */}
@@ -90,6 +92,9 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </div>
+
+                {/* Certificates */}
+                <CertificateBadges className="justify-center pt-6 border-t border-primary-100" />
               </div>
             </div>
 
