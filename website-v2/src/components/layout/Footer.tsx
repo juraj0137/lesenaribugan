@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { company } from '@/data/company'
+import { getImagePath } from '@/lib/config'
 
 export default function Footer() {
   return (
@@ -17,12 +18,12 @@ export default function Footer() {
             </p>
             <div className="flex items-center space-x-3 mt-6">
               <img
-                src={company.certificates.iso9001.image}
+                src={getImagePath(company.certificates.iso9001.image)}
                 alt="ISO 9001"
                 className="h-12 w-auto"
               />
               <img
-                src={company.certificates.reliableFirm.image}
+                src={getImagePath(company.certificates.reliableFirm.image)}
                 alt="Spolehlivá firma"
                 className="h-12 w-auto"
               />

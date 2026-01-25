@@ -1,12 +1,18 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.GITHUB_PAGES === 'true'
+const basePath = isProd ? '/lesenaribugan' : ''
+
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  basePath: process.env.GITHUB_PAGES === 'true' ? '/lesenaribugan' : '',
-  assetPrefix: process.env.GITHUB_PAGES === 'true' ? '/lesenaribugan/' : '',
+  basePath,
+  assetPrefix: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 }
 
 module.exports = nextConfig

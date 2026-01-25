@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { HardHat, MapPin, Award } from 'lucide-react'
 import CertificateBadges from '@/components/ui/CertificateBadges'
+import { getImagePath } from '@/lib/config'
 
 const stats = [
   {
@@ -34,7 +35,7 @@ export default function TrustBadges() {
             {/* Logo and Certificates */}
             <div className="flex items-center justify-center md:justify-start gap-6">
               <img
-                src="/images/logo_2.jpg"
+                src={getImagePath('/images/logo_2.jpg')}
                 alt="Lešenáři Bugáň"
                 className="h-16 lg:h-20 w-auto"
               />

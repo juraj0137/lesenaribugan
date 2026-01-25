@@ -4,6 +4,7 @@ import { Phone, ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Button from '@/components/ui/Button'
 import { company } from '@/data/company'
+import { getImagePath } from '@/lib/config'
 
 export default function Hero() {
   return (
@@ -11,7 +12,7 @@ export default function Hero() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/referencie/oc-karlak-5.jpg')" }}
+        style={{ backgroundImage: `url('${getImagePath('/images/referencie/oc-karlak-5.jpg')}')` }}
       />
 
       {/* Overlay gradient */}

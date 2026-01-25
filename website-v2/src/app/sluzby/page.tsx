@@ -5,6 +5,7 @@ import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home, Ch
 import SectionHeading from '@/components/ui/SectionHeading'
 import ContactSection from '@/components/sections/ContactSection'
 import { services, scaffoldingTypes, scaffoldingLocations } from '@/data/services'
+import { getImagePath } from '@/lib/config'
 
 const iconMap: Record<string, React.ElementType> = {
   Wrench,
@@ -141,7 +142,7 @@ export default function ServicesPage() {
               className="relative rounded-2xl overflow-hidden aspect-[4/3]"
             >
               <img
-                src="/images/referencie/oc-karlak-5.jpg"
+                src={getImagePath('/images/referencie/oc-karlak-5.jpg')}
                 alt="Průmyslové lešení"
                 className="w-full h-full object-cover"
               />

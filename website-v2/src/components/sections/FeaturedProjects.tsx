@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Lightbox from '@/components/ui/Lightbox'
+import { getImagePath } from '@/lib/config'
 
 interface FeaturedProject {
   id: string
@@ -124,7 +125,7 @@ export default function FeaturedProjects() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.1 + imageIndex * 0.05 }}
-                      onClick={() => openLightbox(project.images, imageIndex, project.name)}
+                      onClick={() => openLightbox(project.images.map(getImagePath), imageIndex, project.name)}
                       className={`group relative overflow-hidden rounded-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
                         imageIndex === 0
                           ? 'col-span-2 row-span-2 aspect-[4/3]'
@@ -132,7 +133,7 @@ export default function FeaturedProjects() {
                       }`}
                     >
                       <img
-                        src={image}
+                        src={getImagePath(image)}
                         alt={`${project.name} - foto ${imageIndex + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
