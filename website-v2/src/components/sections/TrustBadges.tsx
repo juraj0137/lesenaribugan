@@ -38,9 +38,14 @@ export default function TrustBadges() {
             transition={{ duration: 0.6 }}
             className="bg-white rounded-2xl shadow-xl p-6 lg:p-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-6 lg:gap-8 items-center">
-              {/* Certificates */}
-              <div className="md:col-span-2 flex items-center justify-center md:justify-start gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-center">
+              {/* Logo and Certificates */}
+              <div className="flex items-center justify-center md:justify-start gap-6">
+                <img
+                  src="/images/logo_2.jpg"
+                  alt="Lešenáři Bugáň"
+                  className="h-16 lg:h-20 w-auto"
+                />
                 <button
                   onClick={() => setCertificateModalOpen(true)}
                   className="flex items-center justify-center p-2 hover:bg-primary-50 rounded-lg transition-colors group"
@@ -54,24 +59,18 @@ export default function TrustBadges() {
                 </button>
                 <img
                   src={company.certificates.reliableFirm.image}
-                  alt="Spolehlivá firma 2024"
+                  alt="Spolehlivá firma 2026"
                   className="h-16 lg:h-20 w-auto"
                 />
               </div>
 
-              {/* Divider */}
-              <div className="hidden md:block h-16 w-px bg-primary-200 mx-auto" />
-
               {/* Stats */}
-              <div className="md:col-span-2 grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <stat.icon className="h-6 w-6 text-accent mx-auto mb-2" />
                     <p className="font-bold text-primary-900 text-sm lg:text-base">
                       {stat.label}
-                    </p>
-                    <p className="text-xs text-muted hidden lg:block">
-                      {stat.description}
                     </p>
                   </div>
                 ))}
