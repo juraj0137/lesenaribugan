@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
+import Image from '@/components/ui/Image'
 import { company } from '@/data/company'
-import { getImagePath } from '@/lib/config'
 
 export default function Footer() {
   return (
@@ -17,13 +17,13 @@ export default function Footer() {
               Profesionální montáž a pronájem průmyslového lešení po celé České republice a na Slovensku.
             </p>
             <div className="flex items-center space-x-3 mt-6">
-              <img
-                src={getImagePath(company.certificates.iso9001.image)}
+              <Image
+                src={company.certificates.iso9001.image}
                 alt="ISO 9001"
                 className="h-12 w-auto"
               />
-              <img
-                src={getImagePath(company.certificates.reliableFirm.image)}
+              <Image
+                src={company.certificates.reliableFirm.image}
                 alt="Spolehlivá firma"
                 className="h-12 w-auto"
               />

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import SectionHeading from '@/components/ui/SectionHeading'
+import Image from '@/components/ui/Image'
 import { references } from '@/data/references'
-import { getImagePath } from '@/lib/config'
 
 export default function References() {
   // Show first 6 references on homepage
@@ -29,8 +29,8 @@ export default function References() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <div className="group relative overflow-hidden rounded-xl aspect-[4/3] bg-primary-100">
-                <img
-                  src={getImagePath(reference.image)}
+                <Image
+                  src={reference.image}
                   alt={reference.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

@@ -4,6 +4,10 @@ import { useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
+function getWebPPath(src: string): string {
+  return src.replace(/\.(jpg|jpeg|png)$/i, '.webp')
+}
+
 interface LightboxProps {
   images: string[]
   currentIndex: number
@@ -84,17 +88,21 @@ export default function Lightbox({
           )}
 
           {/* Image */}
-          <motion.img
+          <motion.picture
             key={currentIndex}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            src={images[currentIndex]}
-            alt={`${alt} - ${currentIndex + 1}`}
-            className="max-h-[90vh] max-w-[90vw] object-contain"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            <source srcSet={getWebPPath(images[currentIndex])} type="image/webp" />
+            <img
+              src={images[currentIndex]}
+              alt={`${alt} - ${currentIndex + 1}`}
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+            />
+          </motion.picture>
 
           {/* Next button */}
           {images.length > 1 && (

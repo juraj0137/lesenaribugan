@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import Modal from '@/components/ui/Modal'
+import Image from '@/components/ui/Image'
 import { company } from '@/data/company'
-import { getImagePath } from '@/lib/config'
 
 interface CertificateBadgesProps {
   className?: string
@@ -24,14 +24,14 @@ export default function CertificateBadges({
           className="flex items-center justify-center p-2 hover:bg-primary-50 rounded-lg transition-colors group"
           title="Zobrazit certifikát ISO 9001"
         >
-          <img
-            src={getImagePath(company.certificates.iso9001.image)}
+          <Image
+            src={company.certificates.iso9001.image}
             alt="ISO 9001"
             className={`${imageHeight} w-auto group-hover:scale-105 transition-transform`}
           />
         </button>
-        <img
-          src={getImagePath(company.certificates.reliableFirm.image)}
+        <Image
+          src={company.certificates.reliableFirm.image}
           alt="Spolehlivá firma 2026"
           className={`${imageHeight} w-auto`}
         />
@@ -42,8 +42,8 @@ export default function CertificateBadges({
         onClose={() => setCertificateModalOpen(false)}
         title="Certifikát ČSN EN ISO 9001"
       >
-        <img
-          src={getImagePath(company.certificates.iso9001.certificateImage)}
+        <Image
+          src={company.certificates.iso9001.certificateImage}
           alt="Certifikát ISO 9001"
           className="w-full h-auto rounded-lg"
         />

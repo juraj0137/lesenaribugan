@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home, CheckCircle2 } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import ContactSection from '@/components/sections/ContactSection'
+import Image from '@/components/ui/Image'
 import { services, scaffoldingTypes, scaffoldingLocations } from '@/data/services'
-import { getImagePath } from '@/lib/config'
 
 const iconMap: Record<string, React.ElementType> = {
   Wrench,
@@ -141,8 +141,8 @@ export default function ServicesPage() {
               transition={{ duration: 0.6 }}
               className="relative rounded-2xl overflow-hidden aspect-[4/3]"
             >
-              <img
-                src={getImagePath('/images/referencie/oc-karlak-5.jpg')}
+              <Image
+                src="/images/referencie/oc-karlak-5.jpg"
                 alt="Průmyslové lešení"
                 className="w-full h-full object-cover"
               />

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Lightbox from '@/components/ui/Lightbox'
+import Image from '@/components/ui/Image'
 import { getImagePath } from '@/lib/config'
 
 interface FeaturedProject {
@@ -132,8 +133,8 @@ export default function FeaturedProjects() {
                           : 'aspect-[4/3]'
                       }`}
                     >
-                      <img
-                        src={getImagePath(image)}
+                      <Image
+                        src={image}
                         alt={`${project.name} - foto ${imageIndex + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />

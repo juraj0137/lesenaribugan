@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Modal from '@/components/ui/Modal'
+import Image from '@/components/ui/Image'
 import ContactSection from '@/components/sections/ContactSection'
 import { references, projects } from '@/data/references'
 import { getImagePath } from '@/lib/config'
@@ -54,11 +55,11 @@ export default function ReferencesPage() {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
               >
                 <button
-                  onClick={() => setSelectedImage({ src: getImagePath(reference.image), alt: reference.name })}
+                  onClick={() => setSelectedImage({ src: reference.image, alt: reference.name })}
                   className="group relative overflow-hidden rounded-xl aspect-[4/3] bg-primary-100 w-full text-left"
                 >
-                  <img
-                    src={getImagePath(reference.image)}
+                  <Image
+                    src={reference.image}
                     alt={reference.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
@@ -135,7 +136,7 @@ export default function ReferencesPage() {
         title={selectedImage?.alt}
       >
         {selectedImage && (
-          <img
+          <Image
             src={selectedImage.src}
             alt={selectedImage.alt}
             className="w-full h-auto rounded-lg"
