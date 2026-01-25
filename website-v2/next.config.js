@@ -5,7 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '',
+  basePath: process.env.GITHUB_PAGES === 'true' ? '/lesenaribugan' : '',
+  assetPrefix: process.env.GITHUB_PAGES === 'true' ? '/lesenaribugan/' : '',
 }
 
 module.exports = nextConfig
