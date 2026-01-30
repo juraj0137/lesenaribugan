@@ -1,5 +1,3 @@
-import { Wrench, Building2, Factory, Flame, Train, PipetteIcon, Warehouse, Home, Building, HardHat, Shield, Truck } from 'lucide-react'
-
 export interface Service {
   id: string
   title: string
@@ -80,22 +78,4 @@ export const scaffoldingLocations = [
   "k těžním věžím",
   "k rodinným domům",
   "k panelákům",
-]
-
-export const keyFeatures = [
-  {
-    title: "Stovky projektů",
-    description: "Realizovali jsme stovky projektů pro přední průmyslové podniky v ČR a na Slovensku.",
-    icon: "HardHat",
-  },
-  {
-    title: "Certifikace ISO 9001",
-    description: "Držitelé certifikátu ČSN EN ISO 9001 garantující kvalitu našich služeb.",
-    icon: "Shield",
-  },
-  {
-    title: "Působnost ČR a SK",
-    description: "Poskytujeme služby po celé České republice i na Slovensku.",
-    icon: "Truck",
-  },
 ]
