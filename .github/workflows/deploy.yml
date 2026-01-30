@@ -3,7 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - feature/website-v2
+      - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -13,14 +14,11 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./website-v2
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,20 +28,20 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: './website-v2/package-lock.json'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build
         run: npm run build
-        env:
-          GITHUB_PAGES: 'true'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./website-v2/out
+          path: out
 
   deploy:
     environment:
