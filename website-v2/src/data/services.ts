@@ -59,7 +59,8 @@ export const services: Service[] = [
 ]
 
 export const scaffoldingTypes = [
-  "Rámové lešení ALFIX",
+  "Lešení MULTISYSTEM",
+  "Trubkové lešení",
   "Modulové lešení PERI UP",
   "Fasádní lešení",
   "Prostorové lešení",

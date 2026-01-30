@@ -7,6 +7,18 @@ export interface Reference {
 
 export const references: Reference[] = [
   {
+    id: "oc-karlak",
+    name: "OC KARLÁK",
+    image: "/images/referencie/oc-karlak.jpg",
+    category: "Stavebnictví",
+  },
+  {
+    id: "milotice-most",
+    name: "Most Milotice nad Opavou - Brantice",
+    image: "/images/referencie/milotice.jpg",
+    category: "Dopravní stavby",
+  },
+  {
     id: "liberty",
     name: "Areál LIBERTY a.s.",
     image: "/images/referencie/liberty.jpg",
@@ -77,18 +89,6 @@ export const references: Reference[] = [
     name: "Tatra Kopřivnice",
     image: "/images/referencie/tatra_koprivnice_01.jpg",
     category: "Strojírenství",
-  },
-  {
-    id: "oc-karlak",
-    name: "OC KARLÁK",
-    image: "/images/referencie/oc-karlak.jpg",
-    category: "Stavebnictví",
-  },
-  {
-    id: "milotice-most",
-    name: "Most Milotice nad Opavou - Brantice",
-    image: "/images/referencie/milotice.jpg",
-    category: "Dopravní stavby",
   },
 ]
 

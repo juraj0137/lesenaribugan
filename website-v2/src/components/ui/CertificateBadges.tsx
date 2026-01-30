@@ -35,6 +35,19 @@ export default function CertificateBadges({
           alt="Spolehlivá firma 2026"
           className={`${imageHeight} w-auto`}
         />
+        <a
+          href={company.certificates.ceskoKatalog.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center p-2 hover:bg-primary-50 rounded-lg transition-colors group"
+          title="Katalog Česko"
+        >
+          <Image
+            src={company.certificates.ceskoKatalog.image}
+            alt="Katalog Česko"
+            className={`${imageHeight} w-auto group-hover:scale-105 transition-transform`}
+          />
+        </a>
       </div>
 
       <Modal
