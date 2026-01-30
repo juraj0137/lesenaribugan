@@ -33,13 +33,13 @@ export default function TrustBadges() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-center">
             {/* Logo and Certificates */}
-            <div className="flex items-center justify-center md:justify-start gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6">
               <Image
                 src="/images/logo_2.jpg"
                 alt="Lešenáři Bugáň"
-                className="h-16 lg:h-20 w-auto"
+                className="h-14 sm:h-14 md:h-14 lg:h-16 xl:h-20 w-auto"
               />
-              <CertificateBadges imageHeight="h-16 lg:h-20" />
+              <CertificateBadges imageHeight="h-12 sm:h-12 md:h-12 lg:h-16 xl:h-20" />
             </div>
 
             {/* Stats */}

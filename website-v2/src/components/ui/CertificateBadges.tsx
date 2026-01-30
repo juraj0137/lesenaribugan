@@ -18,7 +18,7 @@ export default function CertificateBadges({
 
   return (
     <>
-      <div className={`flex items-center gap-6 ${className}`}>
+      <div className={`flex flex-wrap md:flex-nowrap items-center justify-center gap-3 sm:gap-4 lg:gap-6 ${className}`}>
         <button
           onClick={() => setCertificateModalOpen(true)}
           className="flex items-center justify-center p-2 hover:bg-primary-50 rounded-lg transition-colors group"
