@@ -1,8 +1,7 @@
 'use client'
 
-import { Fragment } from 'react'
 import Link from 'next/link'
-import { X, Phone, Mail, MapPin } from 'lucide-react'
+import { X, Phone, Mail } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { company } from '@/data/company'
 

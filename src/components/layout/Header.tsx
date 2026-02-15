@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, Phone } from 'lucide-react'
 import { company } from '@/data/company'
 import MobileNav from './MobileNav'
 

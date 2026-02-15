@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home, CheckCircle2 } from 'lucide-react'
-import SectionHeading from '@/components/ui/SectionHeading'
 import ContactSection from '@/components/sections/ContactSection'
 import Image from '@/components/ui/Image'
 import { services, scaffoldingTypes, scaffoldingLocations } from '@/data/services'
