@@ -1,9 +1,10 @@
 import sharp from 'sharp'
 import { readdir, stat, mkdir } from 'fs/promises'
-import { join, extname, basename } from 'path'
+import { join, extname, relative } from 'path'
 
-const IMAGES_DIR = './public/images'
-const MAX_WIDTH = 1920
+const SOURCE_DIR = './public/images-original'
+const OUTPUT_DIR = './public/images'
+const MAX_WIDTH = 1200
 const JPEG_QUALITY = 80
 const WEBP_QUALITY = 80
 
@@ -37,6 +38,12 @@ async function optimizeImage(inputPath) {
   const ext = extname(inputPath).toLowerCase()
   const originalSize = await getFileSize(inputPath)
 
+  // Compute output path (same relative path under OUTPUT_DIR)
+  const rel = relative(SOURCE_DIR, inputPath)
+  const outputPath = join(OUTPUT_DIR, rel)
+  const outputDir = join(outputPath, '..')
+  await mkdir(outputDir, { recursive: true })
+
   // Read image and get metadata
   const image = sharp(inputPath)
   const metadata = await image.metadata()
@@ -47,32 +54,28 @@ async function optimizeImage(inputPath) {
     ? image.resize(MAX_WIDTH, null, { withoutEnlargement: true })
     : image
 
-  // Optimize and overwrite original JPG/PNG
+  // Write optimized JPG/PNG to output
   if (ext === '.jpg' || ext === '.jpeg') {
     await resizedImage
       .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
-      .toFile(inputPath + '.tmp')
+      .toFile(outputPath)
   } else if (ext === '.png') {
     await resizedImage
       .png({ compressionLevel: 9, palette: true })
-      .toFile(inputPath + '.tmp')
+      .toFile(outputPath)
   }
 
-  // Replace original with optimized
-  const { rename } = await import('fs/promises')
-  await rename(inputPath + '.tmp', inputPath)
-
-  // Generate WebP version
-  const webpPath = inputPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')
-  await sharp(inputPath)
+  // Generate WebP version in output
+  const webpPath = outputPath.replace(/\.(jpg|jpeg|png)$/i, '.webp')
+  await sharp(outputPath)
     .webp({ quality: WEBP_QUALITY })
     .toFile(webpPath)
 
-  const newSize = await getFileSize(inputPath)
+  const newSize = await getFileSize(outputPath)
   const webpSize = await getFileSize(webpPath)
 
   return {
-    path: inputPath,
+    path: rel,
     originalSize,
     newSize,
     webpSize,
@@ -82,10 +85,12 @@ async function optimizeImage(inputPath) {
 }
 
 async function main() {
-  console.log('🖼️  Image Optimization Script\n')
+  console.log('Image Optimization Script\n')
+  console.log(`Source: ${SOURCE_DIR}`)
+  console.log(`Output: ${OUTPUT_DIR}`)
   console.log(`Settings: Max width ${MAX_WIDTH}px, JPEG quality ${JPEG_QUALITY}, WebP quality ${WEBP_QUALITY}\n`)
 
-  const images = await getAllImages(IMAGES_DIR)
+  const images = await getAllImages(SOURCE_DIR)
   console.log(`Found ${images.length} images to optimize\n`)
 
   let totalOriginal = 0
@@ -102,17 +107,17 @@ async function main() {
       const savings = ((1 - result.newSize / result.originalSize) * 100).toFixed(1)
       const webpSavings = ((1 - result.webpSize / result.originalSize) * 100).toFixed(1)
 
-      console.log(`✓ ${result.path}`)
-      console.log(`  Original: ${formatSize(result.originalSize)}${result.resized ? ` (${result.originalWidth}px → ${MAX_WIDTH}px)` : ''}`)
+      console.log(`${result.path}`)
+      console.log(`  Original: ${formatSize(result.originalSize)}${result.resized ? ` (${result.originalWidth}px -> ${MAX_WIDTH}px)` : ''}`)
       console.log(`  Optimized: ${formatSize(result.newSize)} (-${savings}%)`)
       console.log(`  WebP: ${formatSize(result.webpSize)} (-${webpSavings}%)\n`)
     } catch (error) {
-      console.error(`✗ ${imagePath}: ${error.message}\n`)
+      console.error(`FAIL ${imagePath}: ${error.message}\n`)
     }
   }
 
-  console.log('─'.repeat(50))
-  console.log(`\n📊 Summary:`)
+  console.log('-'.repeat(50))
+  console.log(`\nSummary:`)
   console.log(`  Original total: ${formatSize(totalOriginal)}`)
   console.log(`  Optimized JPG/PNG: ${formatSize(totalNew)} (-${((1 - totalNew / totalOriginal) * 100).toFixed(1)}%)`)
   console.log(`  WebP total: ${formatSize(totalWebp)} (-${((1 - totalWebp / totalOriginal) * 100).toFixed(1)}%)`)
