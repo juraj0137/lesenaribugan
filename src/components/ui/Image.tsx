@@ -1,5 +1,3 @@
-import { getImagePath } from '@/lib/config'
-
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string
   alt: string
@@ -10,18 +8,17 @@ function getWebPPath(src: string): string {
 }
 
 export default function Image({ src, alt, ...props }: ImageProps) {
-  const imageSrc = src.startsWith('/') ? getImagePath(src) : src
-  const webpSrc = getWebPPath(imageSrc)
+  const webpSrc = getWebPPath(src)
   const isOptimizable = /\.(jpg|jpeg|png)$/i.test(src)
 
   if (isOptimizable) {
     return (
       <picture>
         <source srcSet={webpSrc} type="image/webp" />
-        <img src={imageSrc} alt={alt} {...props} />
+        <img src={src} alt={alt} {...props} />
       </picture>
     )
   }
 
-  return <img src={imageSrc} alt={alt} {...props} />
+  return <img src={src} alt={alt} {...props} />
 }

@@ -7,7 +7,6 @@ import Modal from '@/components/ui/Modal'
 import Image from '@/components/ui/Image'
 import ContactSection from '@/components/sections/ContactSection'
 import { references, projects } from '@/data/references'
-import { getImagePath } from '@/lib/config'
 
 export default function ReferencesPage() {
   const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
