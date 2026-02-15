@@ -1,5 +1,6 @@
 'use client'
 
+import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import { X, Phone, Mail } from 'lucide-react'
 import { company } from '@/data/company'
@@ -16,7 +17,7 @@ export default function MobileNav({ isOpen, onClose, navigation }: MobileNavProp
 
   if (!mounted) return null
 
-  return (
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
@@ -95,6 +96,7 @@ export default function MobileNav({ isOpen, onClose, navigation }: MobileNavProp
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   )
 }
