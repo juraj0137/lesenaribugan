@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Link from 'next/link'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Image from '@/components/ui/Image'
+import FadeIn from '@/components/ui/FadeIn'
 import { references } from '@/data/references'
 
 export default function References() {
@@ -21,12 +21,10 @@ export default function References() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
           {featuredReferences.map((reference, index) => (
-            <motion.div
+            <FadeIn
               key={reference.id}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
+              scale
+              delay={index * 0.1}
             >
               <div className="group relative overflow-hidden rounded-xl aspect-[4/3] bg-primary-100">
                 <Image
@@ -47,15 +45,13 @@ export default function References() {
                   </h3>
                 </div>
               </div>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <FadeIn
+          delay={0.4}
+          duration={0.6}
           className="text-center mt-12"
         >
           <Link
@@ -67,7 +63,7 @@ export default function References() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   )

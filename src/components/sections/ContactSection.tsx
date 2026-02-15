@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CertificateBadges from '@/components/ui/CertificateBadges'
+import FadeIn from '@/components/ui/FadeIn'
 import { company } from '@/data/company'
 
 export default function ContactSection() {
@@ -18,12 +18,7 @@ export default function ContactSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Phone numbers - prominent */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <FadeIn duration={0.6}>
             <div className="bg-primary-900 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-white mb-6">Zavolejte nám</h3>
               <div className="space-y-6">
@@ -55,14 +50,12 @@ export default function ContactSection() {
               </div>
 
               </div>
-          </motion.div>
+          </FadeIn>
 
           {/* Email and address */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+          <FadeIn
+            delay={0.1}
+            duration={0.6}
             className="space-y-6"
           >
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-primary-100">
@@ -111,7 +104,7 @@ export default function ContactSection() {
                 title="Mapa"
               />
             </div>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

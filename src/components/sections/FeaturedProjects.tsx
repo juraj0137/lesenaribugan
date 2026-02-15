@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Lightbox from '@/components/ui/Lightbox'
 import Image from '@/components/ui/Image'
+import FadeIn from '@/components/ui/FadeIn'
 
 interface FeaturedProject {
   id: string
@@ -89,12 +89,10 @@ export default function FeaturedProjects() {
 
           <div className="space-y-12 lg:space-y-16">
             {featuredProjects.map((project, projectIndex) => (
-              <motion.div
+              <FadeIn
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: projectIndex * 0.2 }}
+                delay={projectIndex * 0.2}
+                duration={0.6}
                 className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10"
               >
                 {/* Project Header */}
@@ -119,34 +117,37 @@ export default function FeaturedProjects() {
                 {/* Image Grid - one big, rest small */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {project.images.map((image, imageIndex) => (
-                    <motion.button
+                    <FadeIn
                       key={image}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.1 + imageIndex * 0.05 }}
-                      onClick={() => openLightbox(project.images, imageIndex, project.name)}
+                      scale
+                      delay={0.1 + imageIndex * 0.05}
+                      as="button"
                       className={`group relative overflow-hidden rounded-xl cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent ${
                         imageIndex === 0
                           ? 'col-span-2 row-span-2 aspect-[4/3]'
                           : 'aspect-[4/3]'
                       }`}
                     >
-                      <Image
-                        src={image}
-                        alt={`${project.name} - foto ${imageIndex + 1}`}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                        <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
-                          Zobrazit
-                        </span>
+                      <div
+                        onClick={() => openLightbox(project.images, imageIndex, project.name)}
+                        className="absolute inset-0"
+                      >
+                        <Image
+                          src={image}
+                          alt={`${project.name} - foto ${imageIndex + 1}`}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                          <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity text-sm font-medium">
+                            Zobrazit
+                          </span>
+                        </div>
                       </div>
-                    </motion.button>
+                    </FadeIn>
                   ))}
                 </div>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import useDelayedUnmount from '@/hooks/useDelayedUnmount'
 
 interface ModalProps {
   isOpen: boolean
@@ -12,6 +12,8 @@ interface ModalProps {
 }
 
 export default function Modal({ isOpen, onClose, children, title }: ModalProps) {
+  const { mounted, visible } = useDelayedUnmount(isOpen, 200)
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
@@ -23,51 +25,46 @@ export default function Modal({ isOpen, onClose, children, title }: ModalProps) 
     }
   }, [isOpen])
 
+  if (!mounted) return null
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50"
+    <>
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 bg-black/80 z-50 transition-opacity duration-200 ${
+          visible ? 'opacity-100' : 'opacity-0'
+        }`}
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div
+        className={`fixed inset-4 lg:inset-8 z-50 flex items-center justify-center pointer-events-none transition-all duration-200 ${
+          visible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+        }`}
+      >
+        <div className="relative max-w-4xl max-h-full overflow-auto bg-white rounded-2xl shadow-2xl pointer-events-auto">
+          {/* Close button */}
+          <button
             onClick={onClose}
-          />
-
-          {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ type: 'spring', duration: 0.3 }}
-            className="fixed inset-4 lg:inset-8 z-50 flex items-center justify-center pointer-events-none"
+            className="absolute top-4 right-4 p-2 text-primary-500 hover:text-primary-900 bg-white rounded-full shadow-md transition-colors z-10"
           >
-            <div className="relative max-w-4xl max-h-full overflow-auto bg-white rounded-2xl shadow-2xl pointer-events-auto">
-              {/* Close button */}
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 p-2 text-primary-500 hover:text-primary-900 bg-white rounded-full shadow-md transition-colors z-10"
-              >
-                <X className="h-6 w-6" />
-              </button>
+            <X className="h-6 w-6" />
+          </button>
 
-              {/* Title */}
-              {title && (
-                <div className="p-6 border-b border-primary-100">
-                  <h3 className="text-xl font-bold text-primary-900">{title}</h3>
-                </div>
-              )}
-
-              {/* Content */}
-              <div className="p-4 lg:p-6">
-                {children}
-              </div>
+          {/* Title */}
+          {title && (
+            <div className="p-6 border-b border-primary-100">
+              <h3 className="text-xl font-bold text-primary-900">{title}</h3>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+          )}
+
+          {/* Content */}
+          <div className="p-4 lg:p-6">
+            {children}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Building2 } from 'lucide-react'
+import FadeIn from '@/components/ui/FadeIn'
 import { company } from '@/data/company'
 
 export default function ContactPage() {
@@ -10,12 +10,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-primary-900">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <div className="animate-hero-fade-in max-w-3xl">
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">
               Kontakt
             </span>
@@ -26,7 +21,7 @@ export default function ContactPage() {
               Máte zájem o naše služby? Neváhejte nás kontaktovat pro nezávaznou nabídku.
               Jsme tu pro vás.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -35,12 +30,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Phone numbers - prominent */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <FadeIn duration={0.6}>
               <div className="bg-primary-900 rounded-2xl p-8 lg:p-10">
                 <h2 className="text-2xl font-bold text-white mb-8">Zavolejte nám</h2>
                 <div className="space-y-8">
@@ -71,14 +61,12 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </FadeIn>
 
             {/* Other contact info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+            <FadeIn
+              delay={0.1}
+              duration={0.6}
               className="space-y-6"
             >
               <div className="bg-white rounded-2xl p-8 shadow-sm border border-primary-100">
@@ -137,7 +125,7 @@ export default function ContactPage() {
                   title="Mapa"
                 />
               </div>
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </section>

@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { HardHat, MapPin, Award } from 'lucide-react'
 import CertificateBadges from '@/components/ui/CertificateBadges'
 import Image from '@/components/ui/Image'
+import FadeIn from '@/components/ui/FadeIn'
 
 const stats = [
   {
@@ -24,11 +24,8 @@ export default function TrustBadges() {
   return (
     <section className="relative z-10 -mt-12 pb-16">
       <div className="container mx-auto px-4 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <FadeIn
+          duration={0.6}
           className="bg-white rounded-2xl shadow-xl p-6 lg:p-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-center">
@@ -56,7 +53,7 @@ export default function TrustBadges() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   )

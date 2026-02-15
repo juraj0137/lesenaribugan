@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Modal from '@/components/ui/Modal'
 import Image from '@/components/ui/Image'
+import FadeIn from '@/components/ui/FadeIn'
 import ContactSection from '@/components/sections/ContactSection'
 import { references, projects } from '@/data/references'
 
@@ -16,12 +16,7 @@ export default function ReferencesPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-primary-900">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <div className="animate-hero-fade-in max-w-3xl">
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">
               Reference
             </span>
@@ -32,7 +27,7 @@ export default function ReferencesPage() {
               Spolupracujeme s předními průmyslovými podniky v České republice a na Slovensku.
               Podívejte se na výběr z našich realizací.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -46,12 +41,10 @@ export default function ReferencesPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {references.map((reference, index) => (
-              <motion.div
+              <FadeIn
                 key={reference.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                scale
+                delay={index * 0.05}
               >
                 <button
                   onClick={() => setSelectedImage({ src: reference.image, alt: reference.name })}
@@ -75,7 +68,7 @@ export default function ReferencesPage() {
                     </h3>
                   </div>
                 </button>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -89,11 +82,8 @@ export default function ReferencesPage() {
             title="Přehled vybraných zakázek"
           />
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <FadeIn
+            duration={0.6}
             className="overflow-x-auto"
           >
             <table className="w-full min-w-[600px]">
@@ -123,7 +113,7 @@ export default function ReferencesPage() {
                 ))}
               </tbody>
             </table>
-          </motion.div>
+          </FadeIn>
         </div>
       </section>
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
+import FadeIn from '@/components/ui/FadeIn'
 import { services } from '@/data/services'
 import Link from 'next/link'
 
@@ -31,12 +31,9 @@ export default function Services() {
           {services.map((service, index) => {
             const IconComponent = iconMap[service.icon] || Wrench
             return (
-              <motion.div
+              <FadeIn
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                delay={index * 0.1}
               >
                 <div className="group bg-white rounded-xl p-6 shadow-sm border border-primary-100 hover:shadow-lg hover:border-accent/20 transition-all duration-300 h-full">
                   <div className="flex items-center justify-center w-12 h-12 bg-primary-900 group-hover:bg-accent rounded-lg mb-4 transition-colors">
@@ -49,16 +46,14 @@ export default function Services() {
                     {service.description}
                   </p>
                 </div>
-              </motion.div>
+              </FadeIn>
             )
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+        <FadeIn
+          delay={0.4}
+          duration={0.6}
           className="text-center mt-12"
         >
           <Link
@@ -70,7 +65,7 @@ export default function Services() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   )

@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Shield, Award, Truck, Clock } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
+import FadeIn from '@/components/ui/FadeIn'
 import { scaffoldingLocations, scaffoldingTypes } from '@/data/services'
 
 const features = [
@@ -42,12 +42,9 @@ export default function WhyUs() {
           {/* Features */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature, index) => (
-              <motion.div
+              <FadeIn
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                delay={index * 0.1}
                 className="bg-primary-800/50 rounded-xl p-6 border border-primary-700"
               >
                 <feature.icon className="h-8 w-8 text-accent mb-4" />
@@ -55,17 +52,15 @@ export default function WhyUs() {
                 <p className="text-primary-300 text-sm leading-relaxed">
                   {feature.description}
                 </p>
-              </motion.div>
+              </FadeIn>
             ))}
           </div>
 
           {/* Scaffolding info */}
           <div className="space-y-8">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <FadeIn
+              direction="left"
+              duration={0.6}
             >
               <h3 className="text-lg font-bold text-accent mb-4">Typy lešení</h3>
               <ul className="grid grid-cols-2 gap-2">
@@ -76,13 +71,12 @@ export default function WhyUs() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+            <FadeIn
+              direction="left"
+              delay={0.2}
+              duration={0.6}
             >
               <h3 className="text-lg font-bold text-accent mb-4">Stavíme lešení</h3>
               <ul className="grid grid-cols-2 gap-2">
@@ -93,7 +87,7 @@ export default function WhyUs() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </div>

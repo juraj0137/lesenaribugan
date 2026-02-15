@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home, CheckCircle2 } from 'lucide-react'
 import ContactSection from '@/components/sections/ContactSection'
 import Image from '@/components/ui/Image'
+import FadeIn from '@/components/ui/FadeIn'
 import { services, scaffoldingTypes, scaffoldingLocations } from '@/data/services'
 
 const iconMap: Record<string, React.ElementType> = {
@@ -23,12 +23,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-primary-900">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl"
-          >
+          <div className="animate-hero-fade-in max-w-3xl">
             <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-4">
               Naše služby
             </span>
@@ -39,7 +34,7 @@ export default function ServicesPage() {
               Nabízíme profesionální montáž, demontáž a pronájem průmyslového lešení
               pro nejnáročnější průmyslové i stavební projekty.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -50,12 +45,9 @@ export default function ServicesPage() {
             {services.map((service, index) => {
               const IconComponent = iconMap[service.icon] || Wrench
               return (
-                <motion.div
+                <FadeIn
                   key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  delay={index * 0.1}
                   className="bg-white rounded-xl p-8 shadow-sm border border-primary-100 hover:shadow-lg transition-all"
                 >
                   <div className="flex items-start space-x-4">
@@ -71,7 +63,7 @@ export default function ServicesPage() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </FadeIn>
               )
             })}
           </div>
@@ -82,11 +74,9 @@ export default function ServicesPage() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <FadeIn
+              direction="right"
+              duration={0.6}
             >
               <h2 className="text-2xl lg:text-3xl font-bold text-primary-900 mb-6">
                 Typy lešení
@@ -102,13 +92,11 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <FadeIn
+              direction="left"
+              duration={0.6}
             >
               <h2 className="text-2xl lg:text-3xl font-bold text-primary-900 mb-6">
                 Kde stavíme lešení
@@ -124,7 +112,7 @@ export default function ServicesPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -133,11 +121,9 @@ export default function ServicesPage() {
       <section className="py-16 lg:py-24 bg-surface">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <FadeIn
+              scale
+              duration={0.6}
               className="relative rounded-2xl overflow-hidden aspect-[4/3]"
             >
               <Image
@@ -146,12 +132,10 @@ export default function ServicesPage() {
                 fill
                 className="object-cover"
               />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            </FadeIn>
+            <FadeIn
+              direction="left"
+              duration={0.6}
             >
               <h2 className="text-2xl lg:text-3xl font-bold text-primary-900 mb-6">
                 Profesionální přístup
@@ -166,7 +150,7 @@ export default function ServicesPage() {
                 bezpečnostní standardy. Jsme držiteli certifikátu ČSN EN ISO 9001,
                 který garantuje kvalitu našich služeb.
               </p>
-            </motion.div>
+            </FadeIn>
           </div>
         </div>
       </section>

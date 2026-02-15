@@ -55,6 +55,30 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
+      keyframes: {
+        'hero-fade-in': {
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to: { opacity: '1', transform: 'none' },
+        },
+        'bounce-scroll': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(10px)' },
+        },
+        'pop-in': {
+          '0%': { opacity: '0', transform: 'scale(0)' },
+          '70%': { transform: 'scale(1.1)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        'hero-fade-in': 'hero-fade-in 0.6s ease-out both',
+        'hero-fade-in-1': 'hero-fade-in 0.6s ease-out 0.1s both',
+        'hero-fade-in-2': 'hero-fade-in 0.6s ease-out 0.2s both',
+        'hero-fade-in-3': 'hero-fade-in 0.6s ease-out 0.3s both',
+        'hero-fade-in-late': 'hero-fade-in 0.6s ease-out 1s both',
+        'bounce-scroll': 'bounce-scroll 2s infinite',
+        'pop-in': 'pop-in 0.5s ease-out 1s both',
+      },
     },
   },
   plugins: [],
