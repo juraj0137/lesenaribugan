@@ -60,7 +60,8 @@ export default function ReferencesPage() {
                   <Image
                     src={reference.image}
                     alt={reference.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -138,6 +139,8 @@ export default function ReferencesPage() {
           <Image
             src={selectedImage.src}
             alt={selectedImage.alt}
+            width={800}
+            height={600}
             className="w-full h-auto rounded-lg"
           />
         )}

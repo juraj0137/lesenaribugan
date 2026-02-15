@@ -37,6 +37,8 @@ export default function TrustBadges() {
               <Image
                 src="/images/logo_2.jpg"
                 alt="Lešenáři Bugáň"
+                width={200}
+                height={80}
                 className="h-14 sm:h-14 md:h-14 lg:h-16 xl:h-20 w-auto"
               />
               <CertificateBadges imageHeight="h-12 sm:h-12 md:h-12 lg:h-16 xl:h-20" />

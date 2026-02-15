@@ -20,11 +20,15 @@ export default function Footer() {
               <Image
                 src={company.certificates.iso9001.image}
                 alt="ISO 9001"
+                width={100}
+                height={48}
                 className="h-12 w-auto"
               />
               <Image
                 src={company.certificates.reliableFirm.image}
                 alt="Spolehlivá firma"
+                width={100}
+                height={48}
                 className="h-12 w-auto"
               />
             </div>

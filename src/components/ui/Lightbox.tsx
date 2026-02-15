@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useCallback } from 'react'
+import NextImage from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -88,7 +89,7 @@ export default function Lightbox({
           )}
 
           {/* Image */}
-          <motion.picture
+          <motion.div
             key={currentIndex}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -96,13 +97,14 @@ export default function Lightbox({
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <source srcSet={getWebPPath(images[currentIndex])} type="image/webp" />
-            <img
-              src={images[currentIndex]}
+            <NextImage
+              src={getWebPPath(images[currentIndex])}
               alt={`${alt} - ${currentIndex + 1}`}
+              width={1200}
+              height={800}
               className="max-h-[90vh] max-w-[90vw] object-contain"
             />
-          </motion.picture>
+          </motion.div>
 
           {/* Next button */}
           {images.length > 1 && (

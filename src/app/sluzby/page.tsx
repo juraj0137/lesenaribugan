@@ -143,7 +143,8 @@ export default function ServicesPage() {
               <Image
                 src="/images/referencie/oc-karlak-5.jpg"
                 alt="Průmyslové lešení"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </motion.div>
             <motion.div

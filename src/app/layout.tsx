@@ -1,9 +1,16 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingContact from '@/components/layout/FloatingContact'
 import StructuredData from '@/components/seo/StructuredData'
 import './globals.css'
+
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'LešenářiBugáň - Průmyslové lešení | Montáž a pronájem',
@@ -42,26 +49,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="cs">
+    <html lang="cs" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <meta name="theme-color" content="#0f172a" />
         <StructuredData />
       </head>
-      <body className="bg-white text-primary-900">
+      <body className="bg-white text-primary-900 font-sans">
         <Header />
         <main>{children}</main>
         <Footer />

@@ -27,12 +27,16 @@ export default function CertificateBadges({
           <Image
             src={company.certificates.iso9001.image}
             alt="ISO 9001"
+            width={100}
+            height={56}
             className={`${imageHeight} w-auto group-hover:scale-105 transition-transform`}
           />
         </button>
         <Image
           src={company.certificates.reliableFirm.image}
           alt="Spolehlivá firma 2026"
+          width={100}
+          height={56}
           className={`${imageHeight} w-auto`}
         />
         <a
@@ -45,6 +49,8 @@ export default function CertificateBadges({
           <Image
             src={company.certificates.ceskoKatalog.image}
             alt="Katalog Česko"
+            width={100}
+            height={56}
             className={`${imageHeight} w-auto group-hover:scale-105 transition-transform`}
           />
         </a>
@@ -58,6 +64,8 @@ export default function CertificateBadges({
         <Image
           src={company.certificates.iso9001.certificateImage}
           alt="Certifikát ISO 9001"
+          width={800}
+          height={1100}
           className="w-full h-auto rounded-lg"
         />
       </Modal>
