@@ -35,8 +35,8 @@ export const company = {
     },
     ceskoKatalog: {
       name: "Katalog Česko",
-      image: "http://www.cesko-katalog.cz/banery/cesko-katalog-120x90.gif",
-      url: "http://www.cesko-katalog.cz",
+      image: "https://www.cesko-katalog.cz/banery/cesko-katalog-120x90.gif",
+      url: "https://www.cesko-katalog.cz",
     },
   },
 } as const
