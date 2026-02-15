@@ -1,5 +1,3 @@
-'use client'
-
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home, CheckCircle2 } from 'lucide-react'
 import ContactSection from '@/components/sections/ContactSection'
 import Image from '@/components/ui/Image'
@@ -130,6 +128,7 @@ export default function ServicesPage() {
                 src="/images/referencie/oc-karlak-5.jpg"
                 alt="Průmyslové lešení"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </FadeIn>

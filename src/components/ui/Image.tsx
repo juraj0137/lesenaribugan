@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import NextImage from 'next/image'
 
 function getWebPPath(src: string): string {
@@ -27,30 +30,41 @@ interface SizedImageProps extends BaseImageProps {
 type ImageProps = FillImageProps | SizedImageProps
 
 export default function Image(props: ImageProps) {
-  const optimizedSrc = /\.(jpg|jpeg|png)$/i.test(props.src) ? getWebPPath(props.src) : props.src
+  const isConvertible = /\.(jpg|jpeg|png)$/i.test(props.src)
+  const [useWebP, setUseWebP] = useState(isConvertible)
+
+  const resolvedSrc = useWebP ? getWebPPath(props.src) : props.src
+
+  const handleError = () => {
+    if (useWebP) {
+      setUseWebP(false)
+    }
+  }
 
   if (props.fill) {
     return (
       <NextImage
-        src={optimizedSrc}
+        src={resolvedSrc}
         alt={props.alt}
         fill
         className={props.className}
         sizes={props.sizes}
         priority={props.priority}
+        onError={handleError}
       />
     )
   }
 
   return (
     <NextImage
-      src={optimizedSrc}
+      src={resolvedSrc}
       alt={props.alt}
       width={props.width}
       height={props.height}
       className={props.className}
       sizes={props.sizes}
       priority={props.priority}
+      onError={handleError}
     />
   )
 }

@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Image from '@/components/ui/Image'
@@ -31,6 +29,7 @@ export default function References() {
                   src={reference.image}
                   alt={reference.name}
                   fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />

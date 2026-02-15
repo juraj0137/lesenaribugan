@@ -1,9 +1,8 @@
-'use client'
-
 import { Phone, Mail, MapPin } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import CertificateBadges from '@/components/ui/CertificateBadges'
 import FadeIn from '@/components/ui/FadeIn'
+import LazyMap from '@/components/ui/LazyMap'
 import { company } from '@/data/company'
 
 export default function ContactSection() {
@@ -92,18 +91,7 @@ export default function ContactSection() {
             </div>
 
             {/* Map */}
-            <div className="rounded-2xl overflow-hidden shadow-sm border border-primary-100 aspect-video">
-              <iframe
-                src={company.mapEmbed}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa"
-              />
-            </div>
+            <LazyMap src={company.mapEmbed} title="Mapa" />
           </FadeIn>
         </div>
       </div>

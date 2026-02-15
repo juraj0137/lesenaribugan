@@ -1,5 +1,3 @@
-'use client'
-
 import { Shield, Award, Truck, Clock } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import FadeIn from '@/components/ui/FadeIn'

@@ -1,5 +1,3 @@
-'use client'
-
 import { Wrench, Building2, Building, Factory, Flame, Train, Warehouse, Home } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import FadeIn from '@/components/ui/FadeIn'

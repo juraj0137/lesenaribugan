@@ -136,6 +136,7 @@ export default function FeaturedProjects() {
                           src={image}
                           alt={`${project.name} - foto ${imageIndex + 1}`}
                           fill
+                          sizes={imageIndex === 0 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">

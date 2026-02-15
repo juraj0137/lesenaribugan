@@ -1,5 +1,3 @@
-'use client'
-
 import { HardHat, MapPin, Award } from 'lucide-react'
 import CertificateBadges from '@/components/ui/CertificateBadges'
 import Image from '@/components/ui/Image'
@@ -36,6 +34,7 @@ export default function TrustBadges() {
                 alt="Lešenáři Bugáň"
                 width={200}
                 height={80}
+                priority
                 className="h-14 sm:h-14 md:h-14 lg:h-16 xl:h-20 w-auto"
               />
               <CertificateBadges imageHeight="h-12 sm:h-12 md:h-12 lg:h-16 xl:h-20" />
